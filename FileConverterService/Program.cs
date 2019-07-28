@@ -15,9 +15,12 @@ namespace FileConverterService
             HostFactory.Run(serviceConfig =>
             { serviceConfig.Service<ConverterService>(serviceInstance =>
             {
-                serviceInstance.ConstructUsing(() => new ConverterService());
-                serviceInstance.WhenStarted(execute => execute.Start());
-                serviceInstance.WhenStopped(execute => execute.Stop());
+                serviceInstance.ConstructUsing(
+                    () => new ConverterService());
+                serviceInstance.WhenStarted(
+                    execute => execute.Start());
+                serviceInstance.WhenStopped(
+                    execute => execute.Stop());
             });
                 serviceConfig.SetServiceName("AwsomeFileConverter");
                 serviceConfig.SetDisplayName("Awsome File Converter");

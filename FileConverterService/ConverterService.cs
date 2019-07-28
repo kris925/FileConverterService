@@ -13,8 +13,8 @@ namespace FileConverterService
 
         public bool Start()
         {
-            _watcher = new FileSystemWatcher(@"c:\temp\a", "*_in.txt" );
-            _watcher.Created += FileCreated;
+            _watcher = new FileSystemWatcher(@"C:\temp\a", "*.txt" );
+            _watcher.Created += FileCreated; 
             _watcher.IncludeSubdirectories = false;
             _watcher.EnableRaisingEvents = true;
             return true;
@@ -26,9 +26,9 @@ namespace FileConverterService
             string upperContent = content.ToUpperInvariant();
 
             var dir = Path.GetDirectoryName(e.FullPath);
-
             var convertedFileName = Path.GetFileName(e.FullPath) + ".converted";
             var convertedPath = Path.Combine(dir, convertedFileName);
+
             File.WriteAllText(convertedPath,upperContent);  
 
         }
